@@ -1,28 +1,18 @@
-// Vytvořte komponentu Joke, která zobrazuje jeden vtip. Tato komponenta bude sídlet ve vlastní složce se všemi potřebnými CSS styly a obrázky. Komponenta Joke nechť má pět props: userAvatar, userName, text, likes, dislikes.
-// V hlavním souboru projektu importujte pole objektů ze souboru jokes.js. Zobrazte každý vtip z pole pomocí komponenty Joke.
-// Zvažte, která vlastnost ze zobrazovaných dat se nejlépe hodí pro key prop vaší komponenty a použijte ji jako key.
 import React, { useState } from 'react';
 import './style.css';
 
 export const Joke = ({ userAvatar, userName, text, likes, dislikes }) => {
-  const [likesUp, setLikesUp] = useState(0);
-  const [likesDown, setLikesDown] = useState(0);
+  const [likesUp, setLikesUp] = useState(likes);
+  const [likesDown, setLikesDown] = useState(dislikes);
   return (
     <div className="joke">
       <div className="joke__body">
         <div className="joke__user">
-          <img
-            className="user-avatar"
-            src="https://raw.githubusercontent.com/Czechitas-podklady-WEB/dadjokes/main/users/user01.png"
-          />
-          <p className="user-name">Neroxx</p>
+          <img className="user-avatar" src={userAvatar} />
+          <p className="user-name">{userName}</p>
         </div>
 
-        <p className="joke__text">
-          The secret service isn't allowed to yell "Get down!" anymore when the
-          president is about to be attacked. Now they have to yell "Donald,
-          duck!"
-        </p>
+        <p className="joke__text">{text}</p>
       </div>
       <div className="joke__likes">
         <button
